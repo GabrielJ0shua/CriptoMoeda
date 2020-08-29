@@ -13,7 +13,7 @@ def hello():
 def generationKey():
     arq = open('key.txt','w')
     sk = createSigningKey()
-    arq.writelines(str(sk))
+    arq.writelines(str(sk.to_pem))
     arq.close()
     return "key gerada com sucesso"
 
@@ -22,12 +22,12 @@ def coinbase():
     return COINBASE
 
 @app.route("/validatingTransactionId", methods=['POST'])
-def validating(id, transancoes):
+def validating(id, Transaction):
     id = request.form['id']
-    transancoes = request.form['transancoes']
-    if id is type(int) and transancoes is type(Transaction):
-        if validatingTransactionId(id, transancoes):
-            return "Transação invalida"
+    Transaction = request.form['Transaction']
+    if id is type(int) and Transaction is type(Transaction):
+        if validatingTransactionId(id, Transaction):
+            return "Transação valida"
         else:
             return "Transação invalida"
     else:

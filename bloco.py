@@ -20,7 +20,7 @@ class Blockchain:
         self.BLOCK_INTERVAL = 120
 
     def getLatestBlock(self):
-        return self.__chain[len(self.__chain) - 1]
+        return self.__chain[- 1]
 
     def generationNextBlock(self, data):
         previousBlock = self.getLatestBlock()
